@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.model.RankingSystemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-03-07T18:04:26.847Z" hostname="DESKTOP-GS0ATP0" time="0.01">
+  <properties/>
+  <testcase name="hasPlayer()" classname="org.example.model.RankingSystemTest" time="0.01"/>
+  <system-out><![CDATA[Добавлен игрок: Alexander (ID: 1, Рейтинг: 1200)
+Добавлен игрок: Andrey (ID: 2, Рейтинг: 1300)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
