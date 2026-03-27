@@ -12,11 +12,11 @@ public class Main {
         for (Student student : allStudents) {
             System.out.println(student);
         }
-        List<Student> femaleStudents = studentDao.getStudentsByGender("male");
+        List<Student> femaleStudents = studentDao.getStudentsByGender("female");
         for (Student student : femaleStudents) {
             System.out.println(student);
         }
-        List<Student> studentsWithMathScoreAbove = studentDao.getStudentsWithMathScoreAbove(50);
+        List<Student> studentsWithMathScoreAboveOrEquals = studentDao.getStudentsWithMathScoreAboveOrEquals(50);
         for (Student student : studentsWithMathScoreAbove) {
             System.out.println(student);
         }
