@@ -17,7 +17,7 @@ public class Main {
             System.out.println(student);
         }
         List<Student> studentsWithMathScoreAboveOrEquals = studentDao.getStudentsWithMathScoreAboveOrEquals(50);
-        for (Student student : studentsWithMathScoreAbove) {
+        for (Student student : studentsWithMathScoreAboveOrEquals) {
             System.out.println(student);
         }
     }

@@ -21,7 +21,7 @@ public class StudentDaoImpl implements StudentDao{
     }
 
     @Override
-    public List<Student> getStudentsWithMathScoreAbove(int minScore) {
+    public List<Student> getStudentsWithMathScoreAboveOrEquals(int minScore) {
         List<Student> students = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection("jdbc:h2:./testdb", "SA", "");
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM students WHERE math_score >= ? ")) {
