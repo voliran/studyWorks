@@ -29,7 +29,7 @@ public class ReaderDaoImpl implements ReaderDao {
     public Optional<Reader> findById(int id) {
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM readers WHERE id = ?")) {
-            preparedStatement.setLong(1, id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 Reader reader = new Reader();
@@ -64,9 +64,9 @@ public class ReaderDaoImpl implements ReaderDao {
     @Override
     public void update(Reader reader) {
         try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE readers SET name = ?, WHERE id = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE readers SET name = ? WHERE id = ?")) {
             preparedStatement.setString(1, reader.getName());
-            preparedStatement.setLong(3, reader.getId());
+            preparedStatement.setInt(3, reader.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException();
@@ -77,7 +77,7 @@ public class ReaderDaoImpl implements ReaderDao {
     public void delete(int id) {
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM readers WHERE id = ?")) {
-            preparedStatement.setLong(1, id);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException();

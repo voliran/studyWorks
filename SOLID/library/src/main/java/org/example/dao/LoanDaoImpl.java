@@ -37,7 +37,7 @@ public class LoanDaoImpl implements LoanDao {
     public Optional<Loan> findById(int id) {
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM loans WHERE id = ?")) {
-            preparedStatement.setLong(1, id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSets = preparedStatement.executeQuery();
             if (resultSets.next()) {
                 Loan loan = new Loan();
@@ -100,7 +100,7 @@ public class LoanDaoImpl implements LoanDao {
     public void delete(int id) {
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM loans WHERE id = ?")) {
-            preparedStatement.setLong(1, id);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException();
@@ -132,7 +132,7 @@ public class LoanDaoImpl implements LoanDao {
         List<Loan> loans = new ArrayList<>();
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM loans WHERE reader_id = ?")) {
-            preparedStatement.setLong(1, readerId);
+            preparedStatement.setInt(1, readerId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Loan loan = new Loan();
@@ -162,7 +162,7 @@ public class LoanDaoImpl implements LoanDao {
 
             if (affected > 0) {
                 try (PreparedStatement preparedStatement1 = connection.prepareStatement("SELECT book_id FROM loans WHERE id = ?")) {
-                    preparedStatement1.setLong(1, loanId);
+                    preparedStatement1.setInt(1, loanId);
                     ResultSet resultSet = preparedStatement1.executeQuery();
                     if (resultSet.next()) {
                         int bookId = resultSet.getInt("book_id");

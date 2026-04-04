@@ -34,7 +34,7 @@ public class BookDaoImpl implements BookDao {
     public Optional<Book> findById(int id) {
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM books WHERE id = ?")) {
-            preparedStatement.setLong(1, id);
+            preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 Book book = new Book();
@@ -77,7 +77,7 @@ public class BookDaoImpl implements BookDao {
             preparedStatement.setString(1, book.getTitle());
             preparedStatement.setString(2, book.getAuthor());
             preparedStatement.setInt(3, book.getAvailableCopies());
-            preparedStatement.setLong(4, book.getId());
+            preparedStatement.setInt(4, book.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException();
@@ -88,7 +88,7 @@ public class BookDaoImpl implements BookDao {
     public void delete(int id) {
         try (Connection connection = DatabaseUtil.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM books WHERE id = ?")) {
-            preparedStatement.setLong(1, id);
+            preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException();
