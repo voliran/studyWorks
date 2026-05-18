@@ -33,7 +33,7 @@ public class TransactionController {
 
     @PostMapping("/incomes/add")
     public String addIncome(@RequestParam(name = "amount") BigDecimal amount) {
-        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+        if (amount.compareTo(BigDecimal.ZERO) <= 0 || amount.compareTo(BigDecimal.valueOf(100_000_000)) > 0) {
                 throw new IllegalArgumentException("Сумма должна быть больше 0 и не больше 100_000_000");
         }
         transactionService.saveIncome(amount);
